@@ -4,6 +4,10 @@ Vanilla Strapi 5 TypeScript app. SQLite is the default database. This repo is a 
 
 Install plugins later in this running app. Do not vendor them here.
 
+## Live host
+
+The live host is `https://strapi.grumpysoftware.com` at host root `/`. Admin is at `/admin` (`https://strapi.grumpysoftware.com/admin`).
+
 ## Local develop
 
 Copy `.env.example` to `.env` and replace the placeholder secrets.
