@@ -38,9 +38,18 @@ David deploys this from the Dokploy UI. This repo does not SSH into the host.
    Generate the secrets in the Dokploy UI. `APP_KEYS` needs at least two comma-separated values.
 
 4. Keep the compose volumes. They persist SQLite and uploads at `/opt/app/.tmp` and `/opt/app/public/uploads`.
-5. Point the DNS A record for `strapi.grumpysoftware.com` at the Dokploy host.
-6. Deploy. Wait about 10 seconds after the container is up so Traefik can issue the certificate.
-7. Open `https://strapi.grumpysoftware.com/admin` and create the first admin user.
+5. Deploy. Wait about 10 seconds after the container is up so Traefik can issue the certificate.
+6. Open `https://strapi.grumpysoftware.com/admin` and create the first admin user.
+
+The hostname is already live in Cloudflare. Do not create or change other DNS.
+
+- `strapi.grumpysoftware.com` is an A record to the same Dokploy origin as `dokploy.grumpysoftware.com`.
+- The record is proxied (orange cloud).
+- Traefik in `docker-compose.yml` matches this rule:
+
+```
+traefik.http.routers.strapi.rule=Host(`strapi.grumpysoftware.com`)
+```
 
 Traefik labels live in `docker-compose.yml` (Dokploy [manual Compose method](https://docs.dokploy.com/docs/core/docker-compose/example)). The service joins the external `dokploy-network`. Do not set `container_name`. Dokploy breaks logs and metrics when that field is set.
 
