@@ -23,7 +23,8 @@ RUN npm run build
 
 EXPOSE 1337
 
-RUN chown -R node:node /opt/app
+RUN mkdir -p /opt/app/.tmp /opt/app/public/uploads \
+    && chown -R node:node /opt/app
 USER node
 
 CMD ["npm", "start"]
