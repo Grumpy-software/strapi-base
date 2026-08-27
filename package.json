@@ -24,7 +24,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.30.3",
-    "strapi-plugin-media-twins": "https://github.com/Grumpy-software/strapi-plugin-media-twins/archive/7ca1b54daf86a9f879184235eac9f3f2f83c8210.tar.gz",
+    "strapi-plugin-media-twins": "https://github.com/Grumpy-software/strapi-plugin-media-twins/archive/01665ddfb641c06bf2271b343114949a18903532.tar.gz",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
