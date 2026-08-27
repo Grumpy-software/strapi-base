@@ -1,0 +1,38 @@
+services:
+  strapi:
+    build: .
+    restart: always
+    ports:
+      - 1337
+    environment:
+      NODE_ENV: production
+      HOST: ${HOST:-0.0.0.0}
+      PORT: ${PORT:-1337}
+      PUBLIC_URL: ${PUBLIC_URL:-https://strapi.grumpysoftware.com}
+      DATABASE_CLIENT: ${DATABASE_CLIENT:-sqlite}
+      DATABASE_FILENAME: ${DATABASE_FILENAME:-.tmp/data.db}
+      APP_KEYS: ${APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
+      JWT_SECRET: ${JWT_SECRET}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+    volumes:
+      - strapi-tmp:/opt/app/.tmp
+      - strapi-uploads:/opt/app/public/uploads
+    networks:
+      - dokploy-network
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.strapi.rule=Host(`strapi.grumpysoftware.com`)
+      - traefik.http.routers.strapi.entrypoints=websecure
+      - traefik.http.routers.strapi.tls.certResolver=letsencrypt
+      - traefik.http.services.strapi.loadbalancer.server.port=1337
+
+networks:
+  dokploy-network:
+    external: true
+
+volumes:
+  strapi-tmp:
+  strapi-uploads:
