@@ -40,6 +40,14 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
       },
     },
   },
+  'media-twins': {
+    enabled: true,
+    config: {
+      similarityThreshold: 10, // Hamming distance, 0–64
+      similarSkipExact: true,
+      deepScanDefault: true,
+    },
+  },
 });
 
 export default config;
