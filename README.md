@@ -59,4 +59,4 @@ The compose file publishes `1337` without a host-to-container port map so Traefi
 
 The Dockerfile uses Node 20. Build runs `npm ci` then `npm run build`. The container starts with `npm start` on port 1337.
 
-`docker-entrypoint.sh` chowns `/opt/app/.tmp` and `/opt/app/public/uploads` to `node` on boot, then runs as `node`. That is required because a first Compose deploy creates the `strapi-tmp` named volume as root after the image `chown`, and SQLite must be able to create `.tmp/data.db`.
+`docker-entrypoint.sh` chowns `/opt/app/.tmp` and `/opt/app/public/uploads` to `node` only when those mounts are not already owned by `node`, then runs as `node`. Later restarts skip the recursive chown so a large uploads library does not delay startup. The first-boot repair is required because a first Compose deploy creates the `strapi-tmp` named volume as root after the image `chown`, and SQLite must be able to create `.tmp/data.db`.
