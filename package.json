@@ -12,7 +12,8 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "postinstall": "test -f node_modules/strapi-plugin-media-twins/dist/server/index.js || test ! -f node_modules/strapi-plugin-media-twins/server/src/index.ts || (cd node_modules/strapi-plugin-media-twins && npx --no-install strapi-plugin build)"
   },
   "dependencies": {
     "@strapi/database": "5.52.2",
@@ -23,9 +24,11 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.30.3",
+    "strapi-plugin-media-twins": "https://github.com/Grumpy-software/strapi-plugin-media-twins/archive/9098297ac384ed4a88a574723fb671dd9a577785.tar.gz",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
+    "@strapi/sdk-plugin": "^5.4.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

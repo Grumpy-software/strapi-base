@@ -2,7 +2,9 @@
 
 Vanilla Strapi 5 TypeScript app. SQLite is the default database. This repo is a Dokploy base for `https://strapi.grumpysoftware.com`. It is not a plugin and it is not a media-twins playground.
 
-Install plugins later in this running app. Do not vendor them here.
+`strapi-plugin-media-twins` is installed and enabled.
+
+Install other plugins later in this running app. Do not vendor them here.
 
 ## Live host
 
