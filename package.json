@@ -1,6 +1,6 @@
 {
   "name": "strapi-base",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Vanilla Strapi 5 TypeScript base for Dokploy",
   "scripts": {
